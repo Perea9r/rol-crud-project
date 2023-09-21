@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{clases.list.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="flex flex-wrap mb-6">
+                <h1 th:text="#{clases.list.headline}" class="grow text-3xl md:text-4xl font-medium mb-2" />
+                <div>
+                    <a th:href="@{/clasess/add}" th:text="#{clases.list.createNew}" class="inline-block text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-300  focus:ring-4 rounded px-5 py-2" />
+                </div>
+            </div>
+            <div th:if="${clasess.empty}" th:text="#{clases.list.empty}" />
+            <div th:if="${!clasess.empty}" class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th th:text="#{clases.id.label}" scope="col" class="text-left p-2" />
+                            <th th:text="#{clases.nombre.label}" scope="col" class="text-left p-2" />
+                            <th th:text="#{clases.nivel.label}" scope="col" class="text-left p-2" />
+                            <th th:text="#{clases.vitalidad.label}" scope="col" class="text-left p-2" />
+                            <th th:text="#{clases.fuerza.label}" scope="col" class="text-left p-2" />
+                            <th th:text="#{clases.destreza.label}" scope="col" class="text-left p-2" />
+                            <th th:text="#{clases.percepcion.label}" scope="col" class="text-left p-2" />
+                            <th th:text="#{clases.inteligencia.label}" scope="col" class="text-left p-2" />
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody class="border-t-2 border-black">
+                        <tr th:each="clases : ${clasess}" class="odd:bg-gray-100">
+                            <td th:text="${clases.id}" class="p-2" />
+                            <td th:text="${clases.nombre}" class="p-2" />
+                            <td th:text="${clases.nivel}" class="p-2" />
+                            <td th:text="${clases.vitalidad}" class="p-2" />
+                            <td th:text="${clases.fuerza}" class="p-2" />
+                            <td th:text="${clases.destreza}" class="p-2" />
+                            <td th:text="${clases.percepcion}" class="p-2" />
+                            <td th:text="${clases.inteligencia}" class="p-2" />
+                            <td class="p-2">
+                                <div class="float-right whitespace-nowrap">
+                                    <a th:href="@{/clasess/edit/{id}(id=${clases.id})}" th:text="#{clases.list.edit}" class="inline-block text-white bg-gray-500 hover:bg-gray-600 focus:ring-gray-200 focus:ring-3 rounded px-2.5 py-1.5 text-sm" />
+                                    <form th:action="@{/clasess/delete/{id}(id=${clases.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm inline">
+                                        <button th:text="#{clases.list.delete}" type="submit" class="inline-block text-white bg-gray-500 hover:bg-gray-600 focus:ring-gray-200 focus:ring-3 rounded px-2.5 py-1.5 text-sm" />
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

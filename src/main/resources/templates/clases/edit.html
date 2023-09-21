@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{clases.edit.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="flex flex-wrap mb-6">
+                <h1 th:text="#{clases.edit.headline}" class="grow text-3xl md:text-4xl font-medium mb-2" />
+                <div>
+                    <a th:href="@{/clasess}" th:text="#{clases.edit.back}" class="inline-block text-white bg-gray-500 hover:bg-gray-600 focus:ring-gray-200 focus:ring-4 rounded px-5 py-2" />
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('clases')}" />
+            <form th:action="${requestUri}" method="post">
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='id', disabled=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='nombre')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='nivel', type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='vitalidad', type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='fuerza', type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='destreza', type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='percepcion', type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='inteligencia', type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='carisma', type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='suerte', type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='raza')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='armas')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='clases', field='habilidades')}" />
+                <input type="submit" th:value="#{clases.edit.headline}" class="inline-block text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-300  focus:ring-4 rounded px-5 py-2 mt-6" />
+            </form>
+        </div>
+    </body>
+</html>
