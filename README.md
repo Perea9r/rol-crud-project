@@ -6,8 +6,6 @@ Este proyecto crea una hoja de rol muy simple, es para practicar con CRUD.
 
 Actualiza la conexión a la base de datos local en `application.properties` o crea tu propio archivo `application-local.properties` para sobrescribir los ajustes.
 
-Se recomienda usar el perfil local. En IntelliJ, se puede agregar `-Dspring.profiles.active=local` en las opciones VM de la configuración de ejecución después de habilitar esta propiedad en "Modificar opciones".
-
 Además de la aplicación Spring Boot, también se debe iniciar el DevServer. [Node.js](https://nodejs.org/es) debe estar instalado: se recomienda la última versión LTS. En el primer uso y después de las actualizaciones, se deben instalar las dependencias:
 
 ```

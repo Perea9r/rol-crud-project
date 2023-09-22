@@ -4,9 +4,13 @@ import com.rol.domain.Clases;
 import com.rol.model.ClasesDTO;
 import com.rol.repos.ClasesRepository;
 import com.rol.util.NotFoundException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @Service
@@ -46,6 +50,11 @@ public class ClasesService {
 
     public void delete(final Long id) {
         clasesRepository.deleteById(id);
+    }
+
+    public void guardarJSON(ClasesDTO clasesDTO) {
+        String json = mapToJSON(clasesDTO);
+        storeJSONToFile(json);
     }
 
 /**
@@ -88,7 +97,38 @@ public class ClasesService {
         clases.setRaza(clasesDTO.getRaza());
         clases.setArmas(clasesDTO.getArmas());
         clases.setHabilidades(clasesDTO.getHabilidades());
+        
+        // Convertir el objeto Clases a JSON y almacenarlo en un archivo
+        String json = mapToJSON(clasesDTO);
+        storeJSONToFile(json);
+        
         return clases;
+    }
+
+    public String mapToJSON(final ClasesDTO clasesDTO) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.writeValueAsString(clasesDTO);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void storeJSONToFile(String json) {
+        String filePath = "./personajes_guardados/personajes.json"; // Ruta del archivo de salida en la carpeta raíz del proyecto
+        
+        try {
+            // Crear un objeto ObjectMapper
+            ObjectMapper objectMapper = new ObjectMapper();
+            
+            // Escribir el JSON en el archivo
+            objectMapper.writeValue(new File(filePath), json);
+            
+            System.out.println("El archivo JSON se ha almacenado exitosamente en " + filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
