@@ -12,7 +12,6 @@ Además de la aplicación Spring Boot, también se debe iniciar el DevServer. [N
 
 ```
 npm install
-
 ```
 
 ## Build
@@ -27,7 +26,7 @@ Node.js se descarga automaticamente utilizando el complemento `frontend-maven-pl
 
 ```
 
-## Further readings
+## Tecnologías Utilizadas
 
 * [Maven docs](https://maven.apache.org/guides/index.html)  
 * [Spring Boot reference](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)  
