@@ -10,7 +10,7 @@ import org.thymeleaf.templateresolver.FileTemplateResolver;
 
 
 /**
- * Load Thymeleaf files from the file system during development, without any caching.
+ * Carga archivos de Thymeleaf desde el sistema de archivos durante el desarrollo, sin ningún tipo de almacenamiento en caché.
  */
 @Configuration
 @Profile("local")

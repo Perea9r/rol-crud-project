@@ -48,6 +48,16 @@ public class ClasesService {
         clasesRepository.deleteById(id);
     }
 
+/**
+ * La función `mapToDTO` mapea las propiedades de un objeto `Clases` a un objeto `ClasesDTO`.
+ * 
+ * @param clases Un objeto de la clase Clases, que contiene varias propiedades como id, nombre,
+ * nivel, vitalidad, fuerza, destreza, percepcion, inteligencia, carisma, suerte, raza, armas y
+ * habilidades.
+ * @param clasesDTO El parámetro `clasesDTO` es una instancia de la clase `ClasesDTO`. Se utiliza para
+ * almacenar los valores mapeados del objeto `clases`.
+ * @return El método devuelve el objeto `clasesDTO`.
+ */
     private ClasesDTO mapToDTO(final Clases clases, final ClasesDTO clasesDTO) {
         clasesDTO.setId(clases.getId());
         clasesDTO.setNombre(clases.getNombre());

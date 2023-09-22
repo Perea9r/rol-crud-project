@@ -17,6 +17,16 @@ import org.springframework.web.server.ResponseStatusException;
 @RestControllerAdvice(annotations = RestController.class)
 public class RestExceptionHandler {
 
+/**
+ * La función maneja la NotFoundException creando un objeto ErrorResponse con el código de estado adecuado,
+ * el nombre de la excepción y el mensaje de error, y lo devuelve como ResponseEntity con el
+ * estado NOT_FOUND.
+ * 
+ * @param exception El parámetro "exception" es una instancia de la clase NotFoundException, que es
+ * una excepción que se lanza cuando no se encuentra un recurso.
+ * @return Se devuelve un objeto ResponseEntity que contiene un objeto ErrorResponse y el código de estado HTTP 404
+ * (NOT_FOUND).
+ */
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ErrorResponse> handleNotFound(final NotFoundException exception) {
         final ErrorResponse errorResponse = new ErrorResponse();
@@ -26,6 +36,15 @@ public class RestExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
+/**
+ * La función anterior es un controlador de excepciones de Java que maneja MethodArgumentNotValidException
+ * extrayendo errores de campo de la excepción y devolviendo un objeto ErrorResponse con el
+ * código de estado HTTP adecuado.
+ * 
+ * @param exception El parámetro de excepción es de tipo MethodArgumentNotValidException. Es una
+ * excepción que se lanza cuando falla la validación de los argumentos del método anotados con @Valid.
+ * @return El método devuelve un objeto ResponseEntity con un tipo genérico de ErrorResponse.
+ */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleMethodArgumentNotValid(
             final MethodArgumentNotValidException exception) {
